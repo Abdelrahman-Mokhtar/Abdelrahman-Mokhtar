@@ -1,0 +1,106 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import matplotlib.colors as colors
+df = pd.read_excel('E:\Hybrid Mudlogging\XRF\ML&AI\Pytest.xlsx')
+cols_to_plot = list(df)
+rows = 3
+cols = 2
+
+fig, ax = plt.subplots(figsize=(100,100))
+ax1 = plt.subplot2grid((2,2), (0,0), rowspan=1, colspan=1)
+ax2 = plt.subplot2grid((2,2), (0,1), rowspan=1, colspan=1)
+ax3 = plt.subplot2grid((2,2), (1,0), rowspan=1, colspan=1)
+ax4 = plt.subplot2grid((2,2), (1,1), rowspan=1, colspan=1)
+
+ax1.scatter(x= "%K", y= "Rb ppm", data= df, alpha= 0.2)
+ax1.set_ylabel("%K")
+ax1.set_xlabel("Rb ppm")
+ax2.scatter(x= "%Al", y= "Ga ppm", data= df, alpha= 0.2)
+ax2.set_ylabel("%Al")
+ax2.set_xlabel("Ga ppm")
+ax3.scatter(x= "Mo ppm", y= "U ppm", data= df, alpha= 0.2)
+ax3.set_ylabel("Mo ppm")
+ax3.set_xlabel("U ppm")
+ax4.scatter(x= "%S", y= "%Ca", data= df, alpha= 0.2)
+ax4.set_ylabel("%S")
+ax4.set_xlabel("%Ca")
+
+fig2 = plt.subplots(figsize=(10,10))
+ax1 = plt.subplot2grid((1,3), (0,0), rowspan=1, colspan = 1)
+ax2 = plt.subplot2grid((1,3), (0,1), rowspan=1, colspan = 1)
+ax3 = plt.subplot2grid((1,3), (0,2), rowspan=1, colspan = 1)
+ax4 = ax1.twiny()
+ax5 = ax2.twiny()
+ax6 = ax3.twiny()
+
+
+
+ax1.plot("%Ca", "Bottom Depth (ft)", data = df, color = "green")
+ax1.set_title("Carbonates")
+ax1.set_xlabel("%Ca")
+ax1.set_ylabel("Depth (ft)")
+ax1.set_xlim(0, 60)
+ax1.set_ylim(8200, 9200)
+ax1.grid()
+ax1.tick_params(axis='x', colors="green")
+ax1.spines["top"].set_edgecolor("green")
+ax1.title.set_color('green')
+
+ax4.plot("%Mg", "Bottom Depth (ft)", data = df, color = "yellow")
+ax4.set_xlabel("%Mg")
+ax4.set_ylabel("Depth (ft)")
+ax4.set_xlim(-1, 30)
+ax4.set_ylim(8200, 9200)
+ax4.grid()
+ax4.tick_params(axis='x', colors="yellow")
+ax4.spines["top"].set_edgecolor("yellow")
+ax4.title.set_color('yellow')
+
+ax2.plot("%Si", "Bottom Depth (ft)", data = df, color = "red")
+ax2.set_title("Detrital Rocks")
+ax2.set_xlabel("%Si")
+ax2.set_ylabel("Depth (ft)")
+ax2.set_xlim(-1, 10)
+ax2.set_ylim(8200, 9200)
+ax2.grid()
+ax2.tick_params(axis='x', colors="red")
+ax2.spines["top"].set_edgecolor("red")
+ax2.title.set_color('red')
+
+ax5.plot("Zr ppm", "Bottom Depth (ft)", data = df, color = "blue")
+ax5.set_xlabel("Zr ppm")
+ax5.set_ylabel("Depth (ft)")
+ax5.set_xlim(-300, 300)
+ax5.set_ylim(8200, 9200)
+ax5.grid()
+ax5.tick_params(axis='x', colors="blue")
+ax5.spines["top"].set_edgecolor("blue")
+ax5.title.set_color('blue')
+
+ax3.plot("%Al", "Bottom Depth (ft)", data = df, color = "purple")
+ax3.set_title("Clays")
+ax3.set_xlabel("%Al")
+ax3.set_ylabel("Depth (ft)")
+ax3.set_xlim(-2, 2)
+ax3.set_ylim(8200, 9200)
+ax3.grid()
+ax3.tick_params(axis='x', colors="purple")
+ax3.spines["top"].set_edgecolor("purple")
+ax3.title.set_color('purple')
+
+ax6.plot("%Ti", "Bottom Depth (ft)", data = df, color = "Black")
+ax6.set_xlabel("%Ti")
+ax6.set_ylabel("Depth (ft)")
+ax6.set_xlim(-2, 50)
+ax6.set_ylim(8200, 9200)
+ax6.grid()
+ax6.tick_params(axis='x', colors="Black")
+ax6.spines["top"].set_edgecolor("Black")
+ax6.title.set_color('Black')
+
+plt.show()
+
+
+
